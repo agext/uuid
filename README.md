@@ -8,6 +8,8 @@ Generate, encode, and decode UUIDs v1, as defined in [RFC 4122](http://www.ietf.
 
 v1.0 Stable: Guaranteed no breaking changes to the API in future v1.x releases. No known bugs or performance issues. Probably safe to use in production, though provided on "AS IS" basis.
 
+This package is being actively maintained. If you encounter any problems or have any suggestions for improvement, please [open an issue](https://github.com/agext/uuid/issues). Pull requests are welcome.
+
 ## Overview
 
 [![GoDoc](https://godoc.org/github.com/agext/uuid?status.png)](https://godoc.org/github.com/agext/uuid)
@@ -30,4 +32,4 @@ go get github.com/agext/uuid
 
 ## License
 
-Package log is released under the Apache 2.0 license. See the [LICENSE](LICENSE) file for details.
+Package uuid is released under the Apache 2.0 license. See the [LICENSE](LICENSE) file for details.

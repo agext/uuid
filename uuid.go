@@ -41,7 +41,7 @@ const (
 	gregorianEpoch = 0x01B21DD213814000
 )
 
-// Byte encoded sequence in the following form:
+// UUID is a byte-encoded sequence in the following form:
 //
 //    0                   1                   2                   3
 //     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -219,28 +219,28 @@ func NewFromString(s string) (UUID, error) {
 }
 
 // Hex formats the receiver UUID as a hex string.
-func (this UUID) Hex() string {
-	return hex.EncodeToString([]byte(this))
+func (u UUID) Hex() string {
+	return hex.EncodeToString([]byte(u))
 }
 
 // String formats the receiver UUID as a dash-separated hex string.
-func (this UUID) String() string {
-	h := this.Hex()
+func (u UUID) String() string {
+	h := u.Hex()
 	return h[0:8] + "-" + h[8:12] + "-" + h[12:16] + "-" + h[16:20] + "-" + h[20:32]
 }
 
 // NodeId extracts the node id from the receiver UUID.
-func (this UUID) NodeId() uint32 {
-	nodeId := binary.BigEndian.Uint64(this[8:16]) >> 16
+func (u UUID) NodeId() uint32 {
+	nodeId := binary.BigEndian.Uint64(u[8:16]) >> 16
 	return uint32((nodeId & 0x00ffffff) | ((nodeId & 0xfc000000) >> 2))
 }
 
 // Time extracts the time from the receiver UUID as time.Time.
-func (this UUID) Time() time.Time {
-	time_low := uint64(binary.BigEndian.Uint32(this[0:4]))
-	time_mid := uint64(binary.BigEndian.Uint16(this[4:6]))
-	time_hi := uint64((binary.BigEndian.Uint16(this[6:8]) & 0x0fff))
-	nanosecs := toUnixNano(int64((time_low) + (time_mid << 32) + (time_hi << 48)))
+func (u UUID) Time() time.Time {
+	timeLow := uint64(binary.BigEndian.Uint32(u[0:4]))
+	timeMid := uint64(binary.BigEndian.Uint16(u[4:6]))
+	timeHi := uint64((binary.BigEndian.Uint16(u[6:8]) & 0x0fff))
+	nanosecs := toUnixNano(int64((timeLow) + (timeMid << 32) + (timeHi << 48)))
 
 	return time.Unix(nanosecs/1e9, nanosecs%1e9).UTC()
 }
@@ -271,8 +271,8 @@ func (this UUID) Time() time.Time {
 //                                      that uses SHA-1 hashing.
 //
 // see http://www.ietf.org/rfc/rfc4122.txt section 4.1.3
-func (this UUID) Version() int {
-	return int((binary.BigEndian.Uint16(this[6:8]) & 0xf000) >> 12)
+func (u UUID) Version() int {
+	return int((binary.BigEndian.Uint16(u[6:8]) & 0xf000) >> 12)
 }
 
 // Variant extracts the variant of the receiver UUID.
@@ -292,12 +292,12 @@ func (this UUID) Version() int {
 //     1     1     1    Reserved for future definition.
 //
 // see http://www.ietf.org/rfc/rfc4122.txt section 4.1.1
-func (this UUID) Variant() int {
-	return int((binary.BigEndian.Uint16(this[8:10]) & 0xe000) >> 13)
+func (u UUID) Variant() int {
+	return int((binary.BigEndian.Uint16(u[8:10]) & 0xe000) >> 13)
 }
 
 // UnmarshalJSON implements the json.Unmarshaler interface.
-func (this *UUID) UnmarshalJSON(b []byte) error {
+func (u *UUID) UnmarshalJSON(b []byte) error {
 	var field string
 	if err := json.Unmarshal(b, &field); err != nil {
 		return err
@@ -308,14 +308,14 @@ func (this *UUID) UnmarshalJSON(b []byte) error {
 		return err
 	}
 
-	*this = uuid
+	*u = uuid
 
 	return nil
 }
 
 // MarshalJSON implements the json.Marshaler interface.
-func (this UUID) MarshalJSON() ([]byte, error) {
-	return []byte(`"` + this.String() + `"`), nil
+func (u UUID) MarshalJSON() ([]byte, error) {
+	return []byte(`"` + u.String() + `"`), nil
 }
 
 // fromUnixNano converts a Unix Epoch timestamp of nanosecond precision to Gregorian Epoch.

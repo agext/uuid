@@ -1,18 +1,21 @@
 # A Go package for generating and manipulating UUIDs
 
+[![Release](https://img.shields.io/github/release/agext/uuid.svg?style=flat)](https://github.com/agext/uuid/releases/latest)
+[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg?style=flat)](https://godoc.org/github.com/agext/uuid) 
+[![Build Status](https://travis-ci.org/agext/uuid.svg?branch=master&style=flat)](https://travis-ci.org/agext/uuid)
+[![Coverage Status](https://coveralls.io/repos/github/agext/uuid/badge.svg?style=flat)](https://coveralls.io/github/agext/uuid)
+[![Go Report Card](https://goreportcard.com/badge/github.com/agext/uuid?style=flat)](https://goreportcard.com/report/github.com/agext/uuid)
+
+
 Generate, encode, and decode UUIDs v1, as defined in [RFC 4122](http://www.ietf.org/rfc/rfc4122.txt), in [Go](http://golang.org).
 
-## Maturity
+## Project Status
 
-[![Build Status](https://travis-ci.org/agext/uuid.svg?branch=master)](https://travis-ci.org/agext/uuid)
-
-v1.0 Stable: Guaranteed no breaking changes to the API in future v1.x releases. No known bugs or performance issues. Probably safe to use in production, though provided on "AS IS" basis.
+v1.0.1 Stable: Guaranteed no breaking changes to the API in future v1.x releases. Probably safe to use in production, though provided on "AS IS" basis.
 
 This package is being actively maintained. If you encounter any problems or have any suggestions for improvement, please [open an issue](https://github.com/agext/uuid/issues). Pull requests are welcome.
 
 ## Overview
-
-[![GoDoc](https://godoc.org/github.com/agext/uuid?status.png)](https://godoc.org/github.com/agext/uuid)
 
 Package uuid implements generation and manipulation of UUIDs (v1 defined in RFC 4122).
 

@@ -152,7 +152,7 @@ func TestTime(t *testing.T) {
 	ts := toUnixNano(fromUnixNano(int64(now.UTC().UnixNano())))
 
 	if act := uuid1.Time(); act.UnixNano() != ts {
-		t.Errorf("TestTime: Expecting %d, got %d", ts, act)
+		t.Errorf("TestTime: Expecting %d, got %d", ts, act.UnixNano())
 	}
 }
 

@@ -1,5 +1,3 @@
-# Note: hard-linked into all agext repos - unlink and copy for custom edits
-
 # Ignore docs files
 _gh_pages
 _site

@@ -11,7 +11,7 @@ Generate, encode, and decode UUIDs v1, as defined in [RFC 4122](http://www.ietf.
 
 ## Project Status
 
-v1.0.1 Stable: Guaranteed no breaking changes to the API in future v1.x releases. Probably safe to use in production, though provided on "AS IS" basis.
+v1.1.0 Stable: Guaranteed no breaking changes to the API in future v1.x releases. Probably safe to use in production, though provided on "AS IS" basis.
 
 This package is being actively maintained. If you encounter any problems or have any suggestions for improvement, please [open an issue](https://github.com/agext/uuid/issues). Pull requests are welcome.
 

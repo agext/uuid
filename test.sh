@@ -1,5 +1,3 @@
-# hard-linked into all agext repos - unlink and copy for custom edits
-
 set -ev
 
 if [[ "$1" == "goveralls" ]]; then

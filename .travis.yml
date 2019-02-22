@@ -1,22 +1,22 @@
-# hard-linked into all agext repos - unlink and copy for custom edits
 language: go
 sudo: false
 matrix:
   fast_finish: true
   include:
-    - go: 1.8
+    - go: 1.11.x
       env: TEST_METHOD=goveralls
-    - go: 1.7.5
-    - go: 1.7.4
-    - go: 1.7.3
-    - go: 1.7.2
-    - go: 1.7.1
-    - go: 1.7
+    - go: 1.10.x
     - go: tip
+    - go: 1.9.x
+    - go: 1.8.x
+    - go: 1.7.x
     - go: 1.6.x
     - go: 1.5.x
   allow_failures:
     - go: tip
+    - go: 1.9.x
+    - go: 1.8.x
+    - go: 1.7.x
     - go: 1.6.x
     - go: 1.5.x
 script: ./test.sh $TEST_METHOD
